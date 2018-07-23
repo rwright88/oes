@@ -59,12 +59,11 @@ tab_item_map <- tabItem(
           selected = occ_code_names[[1]],
           multiple = FALSE
         ),
-        selectInput(
+        radioButtons(
           inputId  = "type",
           label    = "Step 2 - Choose a statistic:",
           choices  = stat_types,
-          selected = stat_types[[1]],
-          multiple = FALSE
+          selected = stat_types[[1]]
         )
       )
     ),
