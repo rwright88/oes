@@ -1,0 +1,11 @@
+steps to make/update app:
+
+1. get data from bls with R/oes.R
+2. create data for app with R/oes-map.R
+3. run app/app.R
+
+to do/fix:
+
+- add nectas
+- consistent sf/leaflet projection so no warning
+- better state borders

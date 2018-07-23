@@ -1,0 +1,24 @@
+/*
+ * input custom styling
+ */
+.selectize-input {
+  line-height: 25px;
+}
+.selectize-dropdown {
+  line-height: 25px;
+}
+.radio {
+  line-height: 25px;
+}
+input[type="radio"] {
+  margin-top: -1px;
+  vertical-align: middle;
+  height: 100%;
+}
+
+/*
+ * leaflet custom styling
+ */
+.leaflet-container {
+  background-color: #ffffff;
+}
