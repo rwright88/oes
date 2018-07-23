@@ -6,6 +6,10 @@ steps to make/update app:
 
 to do/fix:
 
-- add nectas
 - consistent sf/leaflet projection so no warning
 - better state borders
+- code cleanup
+
+other info:
+
+https://en.wikipedia.org/wiki/List_of_metropolitan_statistical_areas

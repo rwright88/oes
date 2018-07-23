@@ -22,7 +22,7 @@ source("map.R")
 # data ==========
 
 cleaned <- read_rds("cleaned.rds")
-shape_cbsa <- read_rds("shape_cbsa.rds")
+shape_metro <- read_rds("shape_metro.rds")
 shape_state <- read_rds("shape_state.rds")
 
 cleaned <- cleaned %>% 
@@ -71,11 +71,11 @@ tab_item_map <- tabItem(
     column(
       width = 10,
       box(
-        title = "Occupation employment rate by metro",
+        title = "Occupational employment stats by metro",
         footer = "Source: BLS OES.",
         status = "primary",
         width = NULL,
-        withSpinner(leafletOutput("plot_cbsa", height = 725))
+        withSpinner(leafletOutput("mapmetro", height = 725))
       )
     )
   )
@@ -95,10 +95,10 @@ ui <- dashboardPage(header, sidebar, body)
 # server ==========
 
 server <- function(input, output) {
-  output$plot_cbsa <- renderLeaflet({
-    map_cbsa(
+  output$mapmetro <- renderLeaflet({
+    map_metro(
       df = cleaned,
-      shape_cbsa = shape_cbsa,
+      shape_metro = shape_metro,
       shape_state = shape_state,
       code_name = input$occupation,
       type = input$type

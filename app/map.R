@@ -10,16 +10,16 @@ get_bins <- function(x, w, r, bin_max, na.rm = TRUE) {
   bins
 }
 
-map_cbsa <- function(df, shape_cbsa, shape_state, code_name, type) {
+map_metro <- function(df, shape_metro, shape_state, code_name, type) {
   type <- sym(type)
   
   cleaned_data <- df %>% 
     filter(occ_code_name == code_name)
   
-  shape_data <- shape_cbsa %>% 
-    left_join(cleaned_data, by = c("CBSAFP" = "area_code")) %>% 
+  shape_data <- shape_metro %>% 
+    left_join(cleaned_data, by = c("GEOID" = "area_code")) %>% 
     filter(!str_detect(NAME, ", AK|, HI|, PR")) %>% 
-    filter(!is.na(emp_total), !is.na(!!type)) %>% 
+    filter(!is.na(emp_total), !is.na(!!type)) %>%
     arrange(!!type)
   
   if (type == "emp_rate") {
