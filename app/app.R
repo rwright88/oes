@@ -30,7 +30,7 @@ cleaned <- cleaned %>%
   mutate(occ_code_name = str_c(occupation_code, " - ", occupation_name))
 
 occ_code_names <- sort(unique(cleaned[["occ_code_name"]]))
-stat_types <- c("emp_rate", "wage_p50")
+stat_types <- c("Employment rate" = "emp_rate", "Median salary" = "wage_p50")
 
 # user interface ==========
 
