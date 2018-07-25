@@ -26,7 +26,7 @@ shape_metro <- read_rds("shape_metro.rds")
 shape_state <- read_rds("shape_state.rds")
 
 cleaned <- cleaned %>% 
-  filter(str_sub(occupation_code, 3, 6) == "0000") %>%
+  # filter(str_sub(occupation_code, 3, 6) == "0000") %>%
   mutate(occ_code_name = str_c(occupation_code, " - ", occupation_name))
 
 occ_code_names <- sort(unique(cleaned[["occ_code_name"]]))
