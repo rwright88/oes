@@ -1,38 +1,31 @@
-#===============================================================================
-#
-# Shiny app of oes data.
-#
-#===============================================================================
+# shiny app of OES data ---------------------------------------------------
 
 library(shiny)
 library(shinydashboard)
 library(shinycssloaders)
-
 library(readr)
 library(dplyr)
 library(stringr)
 library(purrr)
-
 library(sf)
 library(RColorBrewer)
 library(leaflet)
 
 source("map.R")
 
-# data ==========
+# data --------------------------------------------------------------------
 
 cleaned <- read_rds("cleaned.rds")
 shape_metro <- read_rds("shape_metro.rds")
 shape_state <- read_rds("shape_state.rds")
 
 cleaned <- cleaned %>% 
-  # filter(str_sub(occupation_code, 3, 6) == "0000") %>%
   mutate(occ_code_name = str_c(occupation_code, " - ", occupation_name))
 
 occ_code_names <- sort(unique(cleaned[["occ_code_name"]]))
 stat_types <- c("Employment rate" = "emp_rate", "Median salary" = "wage_p50")
 
-# user interface ==========
+# user interface ----------------------------------------------------------
 
 header <- dashboardHeader(title = "BLS OES data", titleWidth = 225)
 
@@ -91,7 +84,7 @@ body <- dashboardBody(
 
 ui <- dashboardPage(header, sidebar, body)
 
-# server ==========
+# server ------------------------------------------------------------------
 
 server <- function(input, output) {
   output$mapmetro <- renderLeaflet({
@@ -105,6 +98,6 @@ server <- function(input, output) {
   })
 }
 
-# run ==========
+# run ---------------------------------------------------------------------
 
 shinyApp(ui, server)
